@@ -12,6 +12,7 @@
             --text-primary: #f0f2f5;
             --text-secondary: #8c94a6;
             --accent: #3b82f6;
+            --accent-hover: #2563eb;
         }
 
         * {
@@ -31,7 +32,7 @@
         }
 
         .container {
-            max-width: 600px;
+            max-width: 650px;
             width: 100%;
         }
 
@@ -104,19 +105,40 @@
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 10px;
+            padding: 18px;
+            margin-bottom: 12px;
+            transition: border-color 0.2s;
+        }
+
+        .project-card:hover {
+            border-color: #3b82f6aa;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
         }
 
         .project-title {
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-tag {
+            font-size: 0.7rem;
+            background: #1e2330;
+            color: var(--accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #2a3142;
         }
 
         .project-desc {
             font-size: 0.85rem;
             color: var(--text-secondary);
-            margin-top: 4px;
         }
 
         .contact-list {
@@ -128,12 +150,20 @@
         .contact-item {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            padding: 12px 16px;
+            padding: 14px 16px;
             border-radius: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.9rem;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .contact-item:hover {
+            background: #1a1d26;
+            border-color: var(--accent);
         }
 
         .contact-label {
@@ -142,7 +172,10 @@
 
         .contact-value {
             font-weight: 500;
-            color: var(--text-primary);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         footer {
@@ -159,7 +192,7 @@
     <header>
         <span class="tag">Roblox QA & Playtester</span>
         <h1>jagheterperdyn</h1>
-        <p class="bio">18 y.o. active QA tester dedicated to improving gameplay quality, finding critical edge-case bugs, and optimizing user experience.</p>
+        <p class="bio">18 y.o. active QA tester dedicated to improving gameplay quality, finding critical edge-case bugs, and optimizing user experience across various Roblox genres.</p>
     </header>
 
     <div class="stats-grid">
@@ -174,24 +207,52 @@
     </div>
 
     <div class="section">
-        <div class="section-title">Tested Games</div>
+        <div class="section-title">Tested Games & Experience</div>
+        
         <div class="project-card">
-            <div class="project-title">+1 Jump Power Squishy Escape</div>
-            <div class="project-desc">Full QA analysis covering UI/UX layout, game-breaking glitches, balance, and text formatting.</div>
+            <div class="project-header">
+                <span class="project-title">+1 Jump Power Squishy Escape</span>
+                <span class="project-tag">Physics & Obby</span>
+            </div>
+            <div class="project-desc">Stress testing high-jump mechanics, collision glitches, map boundary exploits, and UI response under high movement speeds.</div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-title">Steal A Meme Egg</span>
+                <span class="project-tag">Simulator & Economy</span>
+            </div>
+            <div class="project-desc">Inventory dupe testing, egg-hatching RNG probability verification, economy balancing, and trade system security checks.</div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-title">Clean The World</span>
+                <span class="project-tag">World Building</span>
+            </div>
+            <div class="project-desc">Multiplayer sync testing, map cleanliness interaction hitboxes, tool responsiveness, and low-end mobile performance checks.</div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-title">Roll an Anime Army</span>
+                <span class="project-tag">Gacha & Combat</span>
+            </div>
+            <div class="project-desc">Gacha roll mechanics verification, unit AI pathfinding, combat balance scaling, and save-data loss prevention testing.</div>
         </div>
     </div>
 
     <div class="section">
         <div class="section-title">Contact & Socials</div>
         <div class="contact-list">
-            <div class="contact-item">
-                <span class="contact-label">Roblox</span>
-                <span class="contact-value">@jagheterperdyn</span>
-            </div>
-            <div class="contact-item">
+            <a href="https://www.roblox.com/users/profile?username=jagheterperdyn" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <span class="contact-label">Roblox Profile</span>
+                <span class="contact-value">@jagheterperdyn ↗</span>
+            </a>
+            <a href="https://discord.com/users/vfyayf_40990_84892" target="_blank" rel="noopener noreferrer" class="contact-item">
                 <span class="contact-label">Discord</span>
-                <span class="contact-value">vfyayf_40990_84892</span>
-            </div>
+                <span class="contact-value">vfyayf_40990_84892 ↗</span>
+            </a>
         </div>
     </div>
 
@@ -202,3 +263,4 @@
 
 </body>
 </html>
+
