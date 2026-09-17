@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jagheterperdyn | Roblox QA Tester</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #0b0c10;
@@ -25,14 +28,37 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg);
             color: var(--text-primary);
             line-height: 1.6;
             padding: 40px 20px;
+            overflow-x: hidden;
         }
 
-        /* Двухколоночная сетка */
+        /* Фоновое свечение */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 60%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Анимации загрузки */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-1 { animation: fadeUp 0.6s ease forwards; }
+        .animate-2 { animation: fadeUp 0.6s ease 0.1s forwards; opacity: 0; }
+        .animate-3 { animation: fadeUp 0.6s ease 0.2s forwards; opacity: 0; }
+
         .layout {
             max-width: 1000px;
             margin: 0 auto;
@@ -41,7 +67,7 @@
             gap: 40px;
         }
 
-        /* --- ЛЕВАЯ КОЛОНКА (САЙДБАР) --- */
+        /* --- ЛЕВАЯ КОЛОНКА --- */
         .sidebar {
             display: flex;
             flex-direction: column;
@@ -50,27 +76,66 @@
 
         header {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: -16px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 2px;
+        /* Аватарка */
+        .avatar-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .tag {
-            display: inline-block;
+        /* Если нет картинки, показываем заглушку */
+        .avatar-placeholder {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--accent);
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            padding: 4px 10px;
+            border-radius: 12px;
             font-weight: 600;
-            margin-bottom: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
         h1 {
@@ -111,7 +176,7 @@
             margin-top: 2px;
         }
 
-        /* Блок информации QA */
+        /* Инфо-блок с SVG */
         .info-block {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -119,7 +184,7 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 20px;
         }
 
         .info-item {
@@ -129,8 +194,14 @@
         }
 
         .info-icon {
-            font-size: 1.2rem;
-            margin-top: -2px;
+            color: var(--accent);
+            flex-shrink: 0;
+            display: flex;
+        }
+
+        .info-icon svg {
+            width: 20px;
+            height: 20px;
         }
 
         .info-content h4 {
@@ -160,11 +231,12 @@
             flex-direction: column;
             text-decoration: none;
             color: inherit;
-            transition: border-color 0.2s ease, transform 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .contact-item:hover {
             border-color: var(--accent);
+            background: #1c212d;
             transform: translateX(4px);
         }
 
@@ -180,7 +252,7 @@
             color: var(--accent);
         }
 
-        /* --- ПРАВАЯ КОЛОНКА (КОНТЕНТ) --- */
+        /* --- ПРАВАЯ КОЛОНКА --- */
         .main-content {
             display: flex;
             flex-direction: column;
@@ -212,13 +284,13 @@
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 16px;
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .project-card:hover {
-            border-color: #3b82f6aa;
+            border-color: #3b82f688;
             transform: translateY(-2px);
-            box-shadow: 0 4px 20px var(--accent-glow);
+            box-shadow: 0 8px 24px var(--accent-glow);
         }
 
         .project-header {
@@ -312,15 +384,9 @@
             padding-top: 20px;
         }
 
-        /* Адаптивность для телефонов */
         @media (max-width: 768px) {
-            .layout {
-                grid-template-columns: 1fr;
-            }
-            .sidebar {
-                border-bottom: 1px solid var(--border);
-                padding-bottom: 30px;
-            }
+            .layout { grid-template-columns: 1fr; }
+            .sidebar { border-bottom: 1px solid var(--border); padding-bottom: 30px; }
         }
     </style>
 </head>
@@ -328,9 +394,16 @@
 
 <div class="layout">
     <!-- ЛЕВАЯ КОЛОНКА -->
-    <div class="sidebar">
+    <div class="sidebar animate-1">
         <header>
-            <span class="tag">Roblox QA & Playtester</span>
+            <div class="avatar-container">
+                <!-- Сюда потом можно вставить ссылку на твой аватар роблокс вместо буквы -->
+                <span class="avatar-placeholder">J</span>
+                <!-- <img src="URL_ТВОЕЙ_КАРТИНКИ" alt="Avatar"> -->
+            </div>
+            <div class="status-badge">
+                <span class="status-dot"></span> Available for Hire
+            </div>
             <h1>jagheterperdyn</h1>
             <p class="bio">18 y.o. active QA tester focused on stress-testing gameplay mechanics, finding edge-case bugs, and reporting UX flaws across high-traffic Roblox games.</p>
         </header>
@@ -348,35 +421,45 @@
 
         <div class="info-block">
             <div class="info-item">
-                <div class="info-icon">⚡</div>
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
                 <div class="info-content">
                     <h4>Response Time</h4>
                     <p>~10 minutes</p>
                 </div>
             </div>
             <div class="info-item">
-                <div class="info-icon">📱</div>
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+                </div>
                 <div class="info-content">
                     <h4>Devices Available</h4>
-                    <p>💻 PC / 📱 Mobile (cross-platform testing)</p>
+                    <p>PC / Mobile (cross-platform testing)</p>
                 </div>
             </div>
             <div class="info-item">
-                <div class="info-icon">🌍</div>
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
                 <div class="info-content">
                     <h4>Timezone</h4>
                     <p>CET / CEST (Sweden)</p>
                 </div>
             </div>
             <div class="info-item">
-                <div class="info-icon">📋</div>
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z"/></svg>
+                </div>
                 <div class="info-content">
                     <h4>Detailed Bug Reports</h4>
                     <p>Every bug includes video proof, screenshots, and exact steps to reproduce.</p>
                 </div>
             </div>
             <div class="info-item">
-                <div class="info-icon">🔄</div>
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                </div>
                 <div class="info-content">
                     <h4>Free Re-Testing</h4>
                     <p>When developers push a fix, I re-verify the issue completely for free.</p>
@@ -398,10 +481,9 @@
 
     <!-- ПРАВАЯ КОЛОНКА -->
     <div class="main-content">
-        <div>
+        <div class="animate-2">
             <div class="section-title">Featured QA Experience</div>
 
-            <!-- ИГРА 1 -->
             <div class="project-card">
                 <div class="project-header">
                     <span class="project-title">Clean The World</span>
@@ -413,7 +495,6 @@
                 <div class="project-desc">Multiplayer synchronization testing, map cleanliness interaction hitboxes, tool responsiveness, and mobile performance checks.</div>
             </div>
             
-            <!-- ИГРА 2 -->
             <div class="project-card">
                 <div class="project-header">
                     <span class="project-title">Dig for eggs</span>
@@ -425,7 +506,6 @@
                 <div class="project-desc">Testing egg generation logic, excavation tool hitboxes, inventory saving mechanics, and economy balance exploits.</div>
             </div>
 
-            <!-- ИГРА 3 -->
             <div class="project-card">
                 <div class="project-header">
                     <span class="project-title">Choose your anime ability</span>
@@ -437,7 +517,6 @@
                 <div class="project-desc">Combat hitbox testing, ability scaling verification, cooldown exploitation checks, and mobile UI combat responsiveness.</div>
             </div>
 
-            <!-- ИГРА 4 -->
             <div class="project-card">
                 <div class="project-header">
                     <span class="project-title">Collect Planets</span>
@@ -450,7 +529,7 @@
             </div>
         </div>
 
-        <div>
+        <div class="animate-3">
             <div class="section-title">Additional Tested Experiences</div>
             <div class="more-games-box">
                 <div class="compact-list">
