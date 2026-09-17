@@ -15,6 +15,7 @@
             --accent-glow: rgba(59, 130, 246, 0.15);
             --badge-bg: #1a2332;
             --badge-text: #60a5fa;
+            --success: #10b981;
         }
 
         * {
@@ -28,25 +29,33 @@
             background-color: var(--bg);
             color: var(--text-primary);
             line-height: 1.6;
-            padding: 60px 20px;
-            display: flex;
-            justify-content: center;
+            padding: 40px 20px;
         }
 
-        .container {
-            max-width: 650px;
-            width: 100%;
+        /* Двухколоночная сетка */
+        .layout {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 40px;
+        }
+
+        /* --- ЛЕВАЯ КОЛОНКА (САЙДБАР) --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
         }
 
         header {
-            margin-bottom: 32px;
             position: relative;
         }
 
         header::before {
             content: '';
             position: absolute;
-            top: -20px;
+            top: -16px;
             left: 0;
             width: 40px;
             height: 3px;
@@ -65,10 +74,11 @@
         }
 
         h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
             letter-spacing: -0.5px;
             margin-bottom: 8px;
+            line-height: 1.2;
         }
 
         .bio {
@@ -79,37 +89,102 @@
         .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 36px;
+            gap: 12px;
         }
 
         .stat-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            padding: 20px;
+            padding: 16px;
             border-radius: 10px;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .stat-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
         }
 
         .stat-number {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-primary);
         }
 
         .stat-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-secondary);
-            margin-top: 4px;
+            margin-top: 2px;
         }
 
-        .section {
-            margin-bottom: 36px;
+        /* Блок информации QA */
+        .info-block {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .info-icon {
+            font-size: 1.2rem;
+            margin-top: -2px;
+        }
+
+        .info-content h4 {
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .info-content p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-item {
+            background: #181b24;
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .contact-label {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        /* --- ПРАВАЯ КОЛОНКА (КОНТЕНТ) --- */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
         }
 
         .section-title {
@@ -117,11 +192,11 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-secondary);
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
         }
 
         .section-title::after {
@@ -135,8 +210,8 @@
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 18px;
-            margin-bottom: 14px;
+            padding: 20px;
+            margin-bottom: 16px;
             transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
@@ -149,223 +224,241 @@
         .project-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
+            align-items: flex-start;
+            margin-bottom: 10px;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 10px;
         }
 
         .project-title {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--text-primary);
         }
 
         .badges {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .visits-badge {
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             background: var(--badge-bg);
             color: var(--badge-text);
-            padding: 2px 8px;
+            padding: 4px 10px;
             border-radius: 12px;
             font-weight: 600;
             border: 1px solid rgba(96, 165, 250, 0.2);
-        }
-
-        .project-tag {
-            font-size: 0.72rem;
-            background: #1e2330;
-            color: var(--text-secondary);
-            padding: 2px 8px;
-            border-radius: 4px;
-            border: 1px solid #2a3142;
-        }
-
-        .project-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Compact secondary list */
-        .more-games-box {
-            background: var(--card-bg);
-            border: 1px dashed var(--border);
-            border-radius: 10px;
-            padding: 16px 18px;
-        }
-
-        .compact-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-
-        .compact-chip {
-            background: #10121a;
-            border: 1px solid var(--border);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .compact-chip span {
-            color: var(--accent);
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .more-note {
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-            font-style: italic;
-        }
-
-        .contact-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .contact-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 14px 16px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-        }
-
-        .contact-item:hover {
-            background: #181b24;
-            border-color: var(--accent);
-            transform: translateX(3px);
-        }
-
-        .contact-label {
-            color: var(--text-secondary);
-        }
-
-        .contact-value {
-            font-weight: 500;
-            color: var(--accent);
             display: flex;
             align-items: center;
             gap: 4px;
         }
 
-        footer {
-            text-align: center;
+        .project-tag {
             font-size: 0.75rem;
+            background: #1e2330;
             color: var(--text-secondary);
-            margin-top: 40px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid #2a3142;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .more-games-box {
+            background: var(--card-bg);
+            border: 1px dashed var(--border);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .compact-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .compact-chip {
+            background: #10121a;
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .more-note {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        footer {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 20px;
             border-top: 1px solid var(--border);
             padding-top: 20px;
+        }
+
+        /* Адаптивность для телефонов */
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                border-bottom: 1px solid var(--border);
+                padding-bottom: 30px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <span class="tag">Roblox QA & Playtester</span>
-        <h1>jagheterperdyn</h1>
-        <p class="bio">18 y.o. active QA tester focused on stress-testing gameplay mechanics, finding edge-case bugs, and reporting UX flaws across high-traffic Roblox games.</p>
-    </header>
+<div class="layout">
+    <!-- ЛЕВАЯ КОЛОНКА -->
+    <div class="sidebar">
+        <header>
+            <span class="tag">Roblox QA & Playtester</span>
+            <h1>jagheterperdyn</h1>
+            <p class="bio">18 y.o. active QA tester focused on stress-testing gameplay mechanics, finding edge-case bugs, and reporting UX flaws across high-traffic Roblox games.</p>
+        </header>
 
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-number">200+</div>
-            <div class="stat-label">Bugs Discovered</div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Bugs Discovered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">300+</div>
+                <div class="stat-label">Suggestions Logged</div>
+            </div>
         </div>
-        <div class="stat-card">
-            <div class="stat-number">300+</div>
-            <div class="stat-label">Suggestions Logged</div>
-        </div>
-    </div>
 
-    <div class="section">
-        <div class="section-title">Featured QA Experience</div>
-
-        <div class="project-card">
-            <div class="project-header">
-                <span class="project-title">Clean The World</span>
-                <div class="badges">
-                    <span class="visits-badge">🔥 6.7M Visits</span>
-                    <span class="project-tag">World Building</span>
+        <div class="info-block">
+            <div class="info-item">
+                <div class="info-icon">⚡</div>
+                <div class="info-content">
+                    <h4>Response Time</h4>
+                    <p>~10 minutes</p>
                 </div>
             </div>
-            <div class="project-desc">Multiplayer synchronization testing, map cleanliness interaction hitboxes, tool responsiveness, and mobile performance checks.</div>
-        </div>
-        
-        <div class="project-card">
-            <div class="project-header">
-                <span class="project-title">+1 Jump Power Squishy Escape</span>
-                <div class="badges">
-                    <span class="project-tag">Physics & Obby</span>
+            <div class="info-item">
+                <div class="info-icon">📱</div>
+                <div class="info-content">
+                    <h4>Devices Available</h4>
+                    <p>💻 PC / 📱 Mobile (cross-platform testing)</p>
                 </div>
             </div>
-            <div class="project-desc">Stress testing high-jump mechanics, collision glitches, map boundary exploits, and UI response under high movement speeds.</div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-header">
-                <span class="project-title">Steal A Meme Egg</span>
-                <div class="badges">
-                    <span class="project-tag">Simulator & Economy</span>
+            <div class="info-item">
+                <div class="info-icon">🌍</div>
+                <div class="info-content">
+                    <h4>Timezone</h4>
+                    <p>CET / CEST (Sweden)</p>
                 </div>
             </div>
-            <div class="project-desc">Inventory dupe testing, egg-hatching RNG probability verification, economy balancing, and trade system security checks.</div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-header">
-                <span class="project-title">Roll an Anime Army</span>
-                <div class="badges">
-                    <span class="project-tag">Gacha & Combat</span>
+            <div class="info-item">
+                <div class="info-icon">📋</div>
+                <div class="info-content">
+                    <h4>Detailed Bug Reports</h4>
+                    <p>Every bug includes video proof, screenshots, and exact steps to reproduce.</p>
                 </div>
             </div>
-            <div class="project-desc">Gacha roll mechanics verification, unit AI pathfinding, combat balance scaling, and save-data loss prevention testing.</div>
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Additional Tested Experiences</div>
-        <div class="more-games-box">
-            <div class="compact-list">
-                <div class="compact-chip">Dig for eggs <span>117K visits</span></div>
-                <div class="compact-chip">Choose your anime ability <span>104K visits</span></div>
-                <div class="compact-chip">Collect Planets <span>37K visits</span></div>
+            <div class="info-item">
+                <div class="info-icon">🔄</div>
+                <div class="info-content">
+                    <h4>Free Re-Testing</h4>
+                    <p>When developers push a fix, I re-verify the issue completely for free.</p>
+                </div>
             </div>
-            <div class="more-note">...and ~15 other tested titles ranging from 100 to 10K+ total visits.</div>
         </div>
-    </div>
 
-    <div class="section">
-        <div class="section-title">Contact & Socials</div>
         <div class="contact-list">
+            <a href="https://discord.com/users/vfyayf_40990_84892" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <span class="contact-label">Discord</span>
+                <span class="contact-value">iwannasmokeyoulikeacigarette ↗</span>
+            </a>
             <a href="https://www.roblox.com/users/profile?username=jagheterperdyn" target="_blank" rel="noopener noreferrer" class="contact-item">
                 <span class="contact-label">Roblox Profile</span>
                 <span class="contact-value">@jagheterperdyn ↗</span>
             </a>
-            <a href="https://discord.com/users/vfyayf_40990_84892" target="_blank" rel="noopener noreferrer" class="contact-item">
-                <span class="contact-label">Discord</span>
-                <span class="contact-value">vfyayf_40990_84892 ↗</span>
-            </a>
+        </div>
+    </div>
+
+    <!-- ПРАВАЯ КОЛОНКА -->
+    <div class="main-content">
+        <div>
+            <div class="section-title">Featured QA Experience</div>
+
+            <!-- ИГРА 1 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-title">Clean The World</span>
+                    <div class="badges">
+                        <span class="visits-badge">🔥 6.7M Visits</span>
+                        <span class="project-tag">World Building</span>
+                    </div>
+                </div>
+                <div class="project-desc">Multiplayer synchronization testing, map cleanliness interaction hitboxes, tool responsiveness, and mobile performance checks.</div>
+            </div>
+            
+            <!-- ИГРА 2 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-title">Dig for eggs</span>
+                    <div class="badges">
+                        <span class="visits-badge">🔥 117K Visits</span>
+                        <span class="project-tag">Simulation</span>
+                    </div>
+                </div>
+                <div class="project-desc">Testing egg generation logic, excavation tool hitboxes, inventory saving mechanics, and economy balance exploits.</div>
+            </div>
+
+            <!-- ИГРА 3 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-title">Choose your anime ability</span>
+                    <div class="badges">
+                        <span class="visits-badge">🔥 104K Visits</span>
+                        <span class="project-tag">Combat / Anime</span>
+                    </div>
+                </div>
+                <div class="project-desc">Combat hitbox testing, ability scaling verification, cooldown exploitation checks, and mobile UI combat responsiveness.</div>
+            </div>
+
+            <!-- ИГРА 4 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-title">Collect Planets</span>
+                    <div class="badges">
+                        <span class="visits-badge">🔥 37K Visits</span>
+                        <span class="project-tag">Exploration</span>
+                    </div>
+                </div>
+                <div class="project-desc">Exploration mechanics, planet collection sync across servers, player gravity physics testing, and boundary glitching.</div>
+            </div>
+        </div>
+
+        <div>
+            <div class="section-title">Additional Tested Experiences</div>
+            <div class="more-games-box">
+                <div class="compact-list">
+                    <div class="compact-chip">...and ~15 other titles</div>
+                    <div class="compact-chip">Visits ranging from 100 to 10K+</div>
+                </div>
+                <div class="more-note">Consistently applying the same strict QA standards to smaller emerging games as well as established front-page titles.</div>
+            </div>
         </div>
     </div>
 
