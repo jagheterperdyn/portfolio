@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru" class="dark">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roblox QA Tester | Portfolio</title>
+  <title>jagheterperdyn | QA Tester Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
@@ -13,184 +13,262 @@
         extend: {
           colors: {
             brand: '#00F0FF',
-            darkBg: '#0B0F19',
-            cardBg: '#111827',
-            cardBorder: '#1F2937'
+            bgDark: '#050B14',
+            panelBg: '#0A1220',
           }
         }
       }
     }
   </script>
+  <style>
+    .glow-cyan {
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    }
+    .glow-cyan-hover:hover {
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+    }
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
-<body class="bg-darkBg text-slate-200 font-sans antialiased min-h-screen selection:bg-brand selection:text-black">
+<body class="bg-bgDark text-slate-300 font-sans antialiased min-h-screen">
 
-  <!-- Header / Hero -->
-  <header class="max-w-5xl mx-auto px-6 pt-12 pb-8">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-800 pb-8">
-      <div class="flex items-center gap-5">
-        <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-3xl font-black text-black shadow-lg shadow-cyan-500/20">
-          QA
-        </div>
-        <div>
-          <div class="flex items-center gap-3">
-            <h1 class="text-3xl font-bold text-white tracking-wide">vfyayf</h1>
-            <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Открыт к предложениям
-            </span>
-          </div>
-          <p class="text-cyan-400 font-medium text-sm mt-1">Roblox QA Tester & Bug Hunter</p>
-          <p class="text-slate-400 text-xs mt-1"><i class="fa-solid me-1 fa-location-dot"></i> Гётеборг, Швеция (CET) • 18 лет</p>
-        </div>
+  <!-- Header Section -->
+  <header class="max-w-4xl mx-auto px-6 pt-16 pb-10 border-b border-slate-800">
+    <div class="flex flex-col md:flex-row gap-8 items-start md:items-center">
+      <!-- Profile/Avatar Placeholder -->
+      <div class="w-24 h-24 rounded-2xl bg-slate-900 border border-brand/50 glow-cyan flex items-center justify-center text-brand text-4xl font-black">
+        QA
       </div>
       
-      <!-- CTA Buttons -->
-      <div class="flex items-center gap-3 w-full md:w-auto">
-        <a href="https://www.roblox.com/users/10455939585/profile" target="_blank" class="flex-1 md:flex-none text-center bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl border border-slate-700 transition">
-          <i class="fa-solid fa-gamepad me-2"></i>Roblox Profile
-        </a>
-        <a href="https://discord.com" target="_blank" class="flex-1 md:flex-none text-center bg-cyan-500 hover:bg-cyan-400 text-black text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg shadow-cyan-500/20 transition">
-          <i class="fa-brands fa-discord me-2"></i>Discord
-        </a>
+      <div class="flex-1">
+        <h1 class="text-4xl font-bold text-white mb-2">Hi, I'm <span class="text-brand drop-shadow-[0_0_10px_rgba(0,240,255,0.8)]">jagheterperdyn</span></h1>
+        <p class="text-slate-400 mb-4 max-w-2xl leading-relaxed">
+          A dedicated Roblox QA Tester & Bug Hunter. I specialize in identifying bugs, balancing game mechanics, and providing actionable feedback to enhance the player experience. Successfully tested over <span class="text-white font-semibold">50+ games</span>.
+        </p>
+        
+        <div class="flex flex-wrap items-center gap-4 text-sm font-medium">
+          <a href="https://discord.com" target="_blank" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition">
+            <i class="fa-brands fa-discord text-[#5865F2]"></i> vfyayf_40990_84892
+          </a>
+          <a href="https://www.roblox.com/users/10455939585/profile" target="_blank" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition">
+            <i class="fa-solid fa-gamepad text-white"></i> Roblox Profile
+          </a>
+          <div class="flex items-center gap-2 px-4 py-2 bg-brand/10 border border-brand/20 text-brand rounded-lg">
+            <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
+            Available for Work
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- Key Metrics Banner -->
-  <section class="max-w-5xl mx-auto px-6 mb-12">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="bg-cardBg border border-cardBorder p-4 rounded-2xl text-center">
-        <div class="text-2xl font-black text-white">50+</div>
-        <div class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-1">Игр протестировано</div>
-      </div>
-      <div class="bg-cardBg border border-cardBorder p-4 rounded-2xl text-center">
-        <div class="text-2xl font-black text-cyan-400">12.4M+</div>
-        <div class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-1">Охват студий</div>
-      </div>
-      <div class="bg-cardBg border border-cardBorder p-4 rounded-2xl text-center">
-        <div class="text-2xl font-black text-white">B2</div>
-        <div class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-1">Английский язык</div>
-      </div>
-      <div class="bg-cardBg border border-cardBorder p-4 rounded-2xl text-center">
-        <div class="text-2xl font-black text-emerald-400">PC + Mobile</div>
-        <div class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-1">Cross-platform</div>
-      </div>
+  <!-- Navigation Tabs -->
+  <nav class="max-w-4xl mx-auto px-6 py-8">
+    <div class="flex flex-wrap gap-4 border-b border-slate-800 pb-2">
+      <button onclick="switchTab('games')" id="btn-games" class="tab-btn px-6 py-2.5 rounded-t-xl font-semibold text-sm transition-all duration-300 bg-brand/10 border-b-2 border-brand text-brand">
+        Top Games Tested
+      </button>
+      <button onclick="switchTab('skills')" id="btn-skills" class="tab-btn px-6 py-2.5 rounded-t-xl font-semibold text-sm transition-all duration-300 text-slate-400 hover:text-white border-b-2 border-transparent">
+        Skills & Workflow
+      </button>
+      <button onclick="switchTab('work')" id="btn-work" class="tab-btn px-6 py-2.5 rounded-t-xl font-semibold text-sm transition-all duration-300 text-slate-400 hover:text-white border-b-2 border-transparent">
+        Sample Of My Work
+      </button>
     </div>
-  </section>
+  </nav>
 
-  <!-- Main Content Grid -->
-  <main class="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+  <!-- Main Content Area -->
+  <main class="max-w-4xl mx-auto px-6 pb-20">
     
-    <!-- Left Column: About & Tech -->
-    <div class="space-y-6">
-      <!-- Specs Card -->
-      <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
-        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-          <i class="fa-solid fa-laptop text-cyan-400"></i> Сетап и устройства
-        </h3>
-        <ul class="space-y-3 text-sm text-slate-300">
-          <li class="flex items-center justify-between p-2.5 bg-slate-900/60 rounded-xl border border-slate-800">
-            <span><i class="fa-solid fa-laptop me-2 text-slate-400"></i> Mac</span>
-            <span class="text-xs bg-slate-800 text-cyan-300 px-2 py-0.5 rounded font-mono">MacBook Air M4</span>
-          </li>
-          <li class="flex items-center justify-between p-2.5 bg-slate-900/60 rounded-xl border border-slate-800">
-            <span><i class="fa-solid fa-mobile-screen me-2 text-slate-400"></i> Мобилки</span>
-            <span class="text-xs bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-mono">iOS / Android</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- General Info Card -->
-      <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
-        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-          <i class="fa-solid fa-user-check text-cyan-400"></i> Детали
-        </h3>
-        <div class="space-y-3 text-sm text-slate-300">
-          <div>
-            <span class="text-xs text-slate-500 uppercase block font-semibold">Занятость</span>
-            <span class="text-white">Гибкий график, готов уделять максимум времени</span>
-          </div>
-          <div>
-            <span class="text-xs text-slate-500 uppercase block font-semibold">Языки</span>
-            <span class="text-white">Русский (родной), English (B2)</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right Column: Studios & Bug Report Standard -->
-    <div class="md:col-span-2 space-y-6">
-      
-      <!-- Studio Experience -->
-      <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
-        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-          <i class="fa-solid fa-building text-cyan-400"></i> Опыт работы со студиями
-        </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-          <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl">
-            <div class="font-bold text-white text-sm">Aura Software</div>
-            <div class="text-xs text-cyan-400 font-semibold mt-0.5">11M+ Members</div>
-          </div>
-          <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl">
-            <div class="font-bold text-white text-sm">The Woods Company</div>
-            <div class="text-xs text-cyan-400 font-semibold mt-0.5">1.1M+ Members</div>
-          </div>
-          <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl">
-            <div class="font-bold text-white text-sm">CLIENTQAMANAGER</div>
-            <div class="text-xs text-cyan-400 font-semibold mt-0.5">300K+ Members</div>
-          </div>
-        </div>
-        <div class="text-xs text-slate-400">
-          <span class="text-slate-300 font-semibold">Примеры плейсов:</span> +1 Mog Evolution, Dig For Eggs, +1 Aura Per Click, +1 Arrow Evolution, Clean the WORLD!
-        </div>
-      </div>
-
-      <!-- Bug Report Format -->
-      <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
-        <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
-          <i class="fa-solid fa-bug text-cyan-400"></i> Стандарт оформления баг-репортов
-        </h3>
-        <p class="text-xs text-slate-400 mb-4">Все баг-репорты оформляются детально в Discord с градацией по приоритетам:</p>
+    <!-- TAB 1: Top Games Tested -->
+    <div id="games" class="tab-content active space-y-6">
+      <h2 class="text-2xl font-bold text-white mb-6">Games I've QA Tested</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         
-        <div class="space-y-3">
-          <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20 flex items-start gap-3">
-            <span class="w-3 h-3 rounded-full bg-emerald-400 mt-1"></span>
-            <div>
-              <div class="text-xs font-bold text-emerald-400 uppercase">Minor Bugs</div>
-              <div class="text-xs text-slate-300">Визуальные баги, текстуры, мелкие недочёты интерфейса.</div>
-            </div>
+        <!-- Game Card -->
+        <a href="https://ibb.co/S7xdqNh" target="_blank" class="group bg-panelBg border border-slate-800 rounded-xl overflow-hidden hover:border-brand/50 transition duration-300 glow-cyan-hover">
+          <img src="https://i.ibb.co/S7xdqNh/image.jpg" onerror="this.src='https://via.placeholder.com/400x200?text=Mog+Evolution'" class="w-full h-32 object-cover group-hover:scale-105 transition duration-500" alt="+1 Mog Evolution">
+          <div class="p-4">
+            <h3 class="text-white font-bold text-sm">+1 Mog Evolution</h3>
           </div>
+        </a>
 
-          <div class="p-3 rounded-xl bg-amber-950/30 border border-amber-500/20 flex items-start gap-3">
-            <span class="w-3 h-3 rounded-full bg-amber-400 mt-1"></span>
-            <div>
-              <div class="text-xs font-bold text-amber-400 uppercase">Medium Bugs</div>
-              <div class="text-xs text-slate-300">Ошибки/варнинги в консоли разработчика, сбои отдельных механик.</div>
-            </div>
+        <!-- Game Card -->
+        <a href="https://ibb.co/r8HYwfs" target="_blank" class="group bg-panelBg border border-slate-800 rounded-xl overflow-hidden hover:border-brand/50 transition duration-300 glow-cyan-hover">
+          <img src="https://i.ibb.co/r8HYwfs/image.jpg" onerror="this.src='https://via.placeholder.com/400x200?text=Dig+For+Animals'" class="w-full h-32 object-cover group-hover:scale-105 transition duration-500" alt="Dig For Animals / Eggs">
+          <div class="p-4">
+            <h3 class="text-white font-bold text-sm">Dig For Eggs / Animals</h3>
           </div>
+        </a>
 
-          <div class="p-3 rounded-xl bg-rose-950/30 border border-rose-500/20 flex items-start gap-3">
-            <span class="w-3 h-3 rounded-full bg-rose-400 mt-1"></span>
-            <div>
-              <div class="text-xs font-bold text-rose-400 uppercase">Critical Bugs</div>
-              <div class="text-xs text-slate-300">Критический баг, ломающий геймплей или полностью блокирующий прогресс.</div>
-            </div>
+        <!-- Game Card -->
+        <a href="https://ibb.co/Mv4GScJ" target="_blank" class="group bg-panelBg border border-slate-800 rounded-xl overflow-hidden hover:border-brand/50 transition duration-300 glow-cyan-hover">
+          <img src="https://i.ibb.co/Mv4GScJ/image.jpg" onerror="this.src='https://via.placeholder.com/400x200?text=+1+Aura'" class="w-full h-32 object-cover group-hover:scale-105 transition duration-500" alt="+1 Aura">
+          <div class="p-4">
+            <h3 class="text-white font-bold text-sm">+1 Aura</h3>
           </div>
+        </a>
+
+        <!-- Game Card -->
+        <a href="https://ibb.co/4n5hQ94" target="_blank" class="group bg-panelBg border border-slate-800 rounded-xl overflow-hidden hover:border-brand/50 transition duration-300 glow-cyan-hover">
+          <img src="https://i.ibb.co/4n5hQ94/image.jpg" onerror="this.src='https://via.placeholder.com/400x200?text=+1+Arrows'" class="w-full h-32 object-cover group-hover:scale-105 transition duration-500" alt="+1 Arrows">
+          <div class="p-4">
+            <h3 class="text-white font-bold text-sm">+1 Arrows Evolution</h3>
+          </div>
+        </a>
+
+        <!-- Game Card -->
+        <a href="https://ibb.co/4nX6Xhn" target="_blank" class="group bg-panelBg border border-slate-800 rounded-xl overflow-hidden hover:border-brand/50 transition duration-300 glow-cyan-hover">
+          <img src="https://i.ibb.co/4nX6Xhn/image.jpg" onerror="this.src='https://via.placeholder.com/400x200?text=Clean+World'" class="w-full h-32 object-cover group-hover:scale-105 transition duration-500" alt="Clean World">
+          <div class="p-4">
+            <h3 class="text-white font-bold text-sm">Clean the WORLD!</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- TAB 2: Skills & Workflow -->
+    <div id="skills" class="tab-content space-y-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Bio Info -->
+        <div class="bg-panelBg border border-slate-800 p-6 rounded-xl">
+          <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-user-gear text-brand me-2"></i> About Me</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex justify-between"><span class="text-slate-400">Age:</span> <span class="text-white">18</span></li>
+            <li class="flex justify-between"><span class="text-slate-400">Timezone:</span> <span class="text-white">Gothenburg, Sweden (CET)</span></li>
+            <li class="flex justify-between"><span class="text-slate-400">Languages:</span> <span class="text-white">English (B2 Level)</span></li>
+            <li class="flex justify-between"><span class="text-slate-400">Dedication:</span> <span class="text-white">Full-time availability for any project</span></li>
+          </ul>
         </div>
 
-        <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-400 flex flex-wrap gap-2">
-          <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg">Playtime & Info</span>
-          <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg">Suggestions / UI Improvements</span>
-          <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg">5-Star Metric Rating</span>
+        <!-- Devices -->
+        <div class="bg-panelBg border border-slate-800 p-6 rounded-xl">
+          <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-desktop text-brand me-2"></i> Devices for Testing</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="p-3 bg-slate-900 rounded border border-slate-800 flex items-center gap-3">
+              <i class="fa-solid fa-laptop text-slate-400 text-lg"></i>
+              <div>
+                <div class="font-bold text-white">MacBook</div>
+                <div class="text-xs text-brand font-mono">MacBook Air M4</div>
+              </div>
+            </li>
+            <li class="p-3 bg-slate-900 rounded border border-slate-800 flex items-center gap-3">
+              <i class="fa-brands fa-apple text-slate-400 text-lg"></i>
+              <div>
+                <div class="font-bold text-white">Mobile Device</div>
+                <div class="text-xs text-brand font-mono">iOS (iPhone)</div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
 
+      <!-- Experience -->
+      <div class="bg-panelBg border border-slate-800 p-6 rounded-xl">
+        <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-building text-brand me-2"></i> Studio Experience</h3>
+        <p class="text-sm text-slate-400 mb-4">I have collaborated with major Roblox development studios to ensure optimal gameplay quality before release.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
+            <div class="font-bold text-white">Aura Software</div>
+            <div class="text-xs text-brand mt-1">11M+ Members</div>
+          </div>
+          <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
+            <div class="font-bold text-white">The Woods Company</div>
+            <div class="text-xs text-brand mt-1">1.1M+ Members</div>
+          </div>
+          <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
+            <div class="font-bold text-white">CLIENTQAMANAGER</div>
+            <div class="text-xs text-brand mt-1">300K+ Members</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Report formatting -->
+      <div class="bg-panelBg border border-slate-800 p-6 rounded-xl">
+        <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-bug text-brand me-2"></i> Bug Reporting Structure</h3>
+        <div class="space-y-3">
+          <div class="p-3 border-l-4 border-emerald-500 bg-slate-900 rounded-r-lg">
+            <h4 class="font-bold text-emerald-400 text-sm">🟢 Minor Bugs</h4>
+            <p class="text-xs text-slate-400 mt-1">Visual glitches, missing textures, small UI imperfections.</p>
+          </div>
+          <div class="p-3 border-l-4 border-amber-500 bg-slate-900 rounded-r-lg">
+            <h4 class="font-bold text-amber-400 text-sm">🟡 Medium Bugs</h4>
+            <p class="text-xs text-slate-400 mt-1">Developer console errors, broken mechanics that don't stop gameplay.</p>
+          </div>
+          <div class="p-3 border-l-4 border-rose-500 bg-slate-900 rounded-r-lg">
+            <h4 class="font-bold text-rose-400 text-sm">🔴 Critical Bugs</h4>
+            <p class="text-xs text-slate-400 mt-1">Game-breaking bugs that completely block player progression or crash the game.</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- TAB 3: Sample Of My Work -->
+    <div id="work" class="tab-content space-y-6">
+      <h2 class="text-2xl font-bold text-white mb-2">Bug Reports & Feedback</h2>
+      <p class="text-slate-400 text-sm mb-6">Screenshots of my detailed bug reports from Discord showing progression analysis, issue tracking, and comprehensive gameplay feedback.</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <a href="https://ibb.co/WpBZHC4" target="_blank" class="block border border-slate-800 rounded-xl overflow-hidden hover:border-brand/50 transition glow-cyan-hover">
+          <img src="https://i.ibb.co/WpBZHC4/image.jpg" onerror="this.src='https://via.placeholder.com/600x400?text=Report+Screenshot'" class="w-full h-auto" alt="Report 1">
+        </a>
+
+        <a href="https://ibb.co/mFD2wsc" target="_blank" class="block border border-slate-800 rounded-xl overflow-hidden hover:border-brand/50 transition glow-cyan-hover">
+          <img src="https://i.ibb.co/mFD2wsc/image.jpg" onerror="this.src='https://via.placeholder.com/600x400?text=Report+Screenshot'" class="w-full h-auto" alt="Report 2">
+        </a>
+
+        <a href="https://ibb.co/Z6SLxkr" target="_blank" class="block border border-slate-800 rounded-xl overflow-hidden hover:border-brand/50 transition glow-cyan-hover">
+          <img src="https://i.ibb.co/Z6SLxkr/image.jpg" onerror="this.src='https://via.placeholder.com/600x400?text=Report+Screenshot'" class="w-full h-auto" alt="Report 3">
+        </a>
+
+        <a href="https://ibb.co/0VjxyFv" target="_blank" class="block border border-slate-800 rounded-xl overflow-hidden hover:border-brand/50 transition glow-cyan-hover">
+          <img src="https://i.ibb.co/0VjxyFv/image.jpg" onerror="this.src='https://via.placeholder.com/600x400?text=Report+Screenshot'" class="w-full h-auto" alt="Report 4">
+        </a>
+        
+        <a href="https://ibb.co/prw2t8r" target="_blank" class="block md:col-span-2 border border-slate-800 rounded-xl overflow-hidden hover:border-brand/50 transition glow-cyan-hover">
+          <img src="https://i.ibb.co/prw2t8r/image.jpg" onerror="this.src='https://via.placeholder.com/800x400?text=Report+Screenshot'" class="w-full h-auto md:h-64 object-cover" alt="Report 5">
+        </a>
+
+      </div>
+    </div>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="max-w-5xl mx-auto px-6 py-8 border-t border-slate-800 text-center text-xs text-slate-500">
-    <p>Discord: <span class="text-slate-300 font-mono">vfyayf_40990_84892</span> • Roblox QA Tester Portfolio</p>
-  </footer>
+  <!-- JavaScript for Tabs -->
+  <script>
+    function switchTab(tabId) {
+      // Hide all contents
+      document.querySelectorAll('.tab-content').forEach(el => {
+        el.classList.remove('active');
+      });
+      
+      // Reset all buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-brand/10', 'border-brand', 'text-brand');
+        btn.classList.add('text-slate-400', 'border-transparent');
+      });
+      
+      // Show active tab
+      document.getElementById(tabId).classList.add('active');
+      
+      // Style active button
+      const activeBtn = document.getElementById('btn-' + tabId);
+      activeBtn.classList.remove('text-slate-400', 'border-transparent');
+      activeBtn.classList.add('bg-brand/10', 'border-brand', 'text-brand');
+    }
+  </script>
 
 </body>
 </html>
