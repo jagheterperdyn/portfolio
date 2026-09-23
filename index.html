@@ -1,538 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jagheterperdyn | Roblox QA Tester</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0b0c10;
-            --card-bg: #14161d;
-            --border: #222632;
-            --text-primary: #f0f2f5;
-            --text-secondary: #8c94a6;
-            --accent: #3b82f6; /* Синий цвет */
-            --accent-glow: rgba(59, 130, 246, 0.15);
-            --badge-bg: #1a2332;
-            --badge-text: #60a5fa;
-            --success: #10b981;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roblox QA Tester | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: '#00F0FF',
+            darkBg: '#0B0F19',
+            cardBg: '#111827',
+            cardBorder: '#1F2937'
+          }
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            padding: 40px 20px;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: -20%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 60%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-1 { animation: fadeUp 0.6s ease forwards; }
-        .animate-2 { animation: fadeUp 0.6s ease 0.1s forwards; opacity: 0; }
-        .animate-3 { animation: fadeUp 0.6s ease 0.2s forwards; opacity: 0; }
-
-        .layout {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 40px;
-        }
-
-        /* --- ЛЕВАЯ КОЛОНКА --- */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        header {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.75rem;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-weight: 600;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            margin-bottom: 12px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--success);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--success);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-            70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-            line-height: 1.2;
-        }
-
-        .bio {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-        }
-
-        /* Новые кнопки соцсетей */
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-            margin-bottom: 8px;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .btn svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        .btn-discord {
-            background-color: #5865F2;
-            color: #ffffff;
-            box-shadow: 0 4px 14px rgba(88, 101, 242, 0.25);
-        }
-
-        .btn-discord:hover {
-            background-color: #4752C4;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
-        }
-
-        .btn-roblox {
-            background-color: #181b24;
-            color: #ffffff;
-            border: 1px solid var(--border);
-        }
-
-        .btn-roblox:hover {
-            background-color: #1c212d;
-            border-color: #8c94a6;
-            transform: translateY(-2px);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .stat-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 16px;
-            border-radius: 10px;
-        }
-
-        .stat-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            margin-top: 2px;
-        }
-
-        .info-block {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .info-icon {
-            color: var(--accent);
-            flex-shrink: 0;
-            display: flex;
-        }
-
-        .info-icon svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .info-content h4 {
-            font-size: 0.85rem;
-            color: var(--text-primary);
-            margin-bottom: 2px;
-        }
-
-        .info-content p {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-
-        /* --- ПРАВАЯ КОЛОНКА --- */
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-
-        /* Обновленный синий заголовок */
-        .section-title {
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent); /* Теперь текст синий */
-            margin-bottom: 16px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        /* Линия тоже с синим оттенком */
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
-            opacity: 0.3;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 16px;
-            transition: all 0.2s ease;
-        }
-
-        .project-card:hover {
-            border-color: #3b82f688;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px var(--accent-glow);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .project-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--text-primary);
-        }
-
-        .badges {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .visits-badge {
-            font-size: 0.75rem;
-            background: var(--badge-bg);
-            color: var(--badge-text);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-weight: 600;
-            border: 1px solid rgba(96, 165, 250, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .project-tag {
-            font-size: 0.75rem;
-            background: #1e2330;
-            color: var(--text-secondary);
-            padding: 4px 10px;
-            border-radius: 6px;
-            border: 1px solid #2a3142;
-        }
-
-        .project-desc {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .more-games-box {
-            background: var(--card-bg);
-            border: 1px dashed var(--border);
-            border-radius: 10px;
-            padding: 20px;
-        }
-
-        .compact-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .compact-chip {
-            background: #10121a;
-            border: 1px solid var(--border);
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .more-note {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            font-style: italic;
-        }
-
-        footer {
-            grid-column: 1 / -1;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 20px;
-            border-top: 1px solid var(--border);
-            padding-top: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .layout { grid-template-columns: 1fr; }
-            .sidebar { border-bottom: 1px solid var(--border); padding-bottom: 30px; }
-        }
-    </style>
+      }
+    }
+  </script>
 </head>
-<body>
+<body class="bg-darkBg text-slate-200 font-sans antialiased min-h-screen selection:bg-brand selection:text-black">
 
-<div class="layout">
-    <!-- ЛЕВАЯ КОЛОНКА -->
-    <div class="sidebar animate-1">
-        <header>
-            <div class="status-badge">
-                <span class="status-dot"></span> Available for Hire
-            </div>
-            <h1>jagheterperdyn</h1>
-            <p class="bio">18 y.o. active QA tester focused on stress-testing gameplay mechanics, finding edge-case bugs, and reporting UX flaws across high-traffic Roblox games.</p>
-        </header>
-
-        <!-- КНОПКИ СОЦСЕТЕЙ ТЕПЕРЬ СВЕРХУ -->
-        <div class="action-buttons">
-            <a href="https://discord.com/users/vfyayf_40990_84892" target="_blank" rel="noopener noreferrer" class="btn btn-discord">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
-                </svg>
-                @iwannasmokeyoulikeacigarette
-            </a>
-            <a href="https://www.roblox.com/users/profile?username=jagheterperdyn" target="_blank" rel="noopener noreferrer" class="btn btn-roblox">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M4.694.417L.417 19.306l18.889 4.277L23.583 4.694 4.694.417zM14.65 14.885l-5.35-1.199 1.199-5.35 5.35 1.199-1.199 5.35z"/>
-                </svg>
-                @jagheterperdyn
-            </a>
+  <!-- Header / Hero -->
+  <header class="max-w-5xl mx-auto px-6 pt-12 pb-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-800 pb-8">
+      <div class="flex items-center gap-5">
+        <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-3xl font-black text-black shadow-lg shadow-cyan-500/20">
+          QA
         </div>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">200+</div>
-                <div class="stat-label">Bugs Discovered</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">300+</div>
-                <div class="stat-label">Suggestions Logged</div>
-            </div>
+        <div>
+          <div class="flex items-center gap-3">
+            <h1 class="text-3xl font-bold text-white tracking-wide">vfyayf</h1>
+            <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs px-2.5 py-1 rounded-full font-medium flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Открыт к предложениям
+            </span>
+          </div>
+          <p class="text-cyan-400 font-medium text-sm mt-1">Roblox QA Tester & Bug Hunter</p>
+          <p class="text-slate-400 text-xs mt-1"><i class="fa-solid me-1 fa-location-dot"></i> Гётеборг, Швеция (CET) • 18 лет</p>
         </div>
+      </div>
+      
+      <!-- CTA Buttons -->
+      <div class="flex items-center gap-3 w-full md:w-auto">
+        <a href="https://www.roblox.com/users/10455939585/profile" target="_blank" class="flex-1 md:flex-none text-center bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl border border-slate-700 transition">
+          <i class="fa-solid fa-gamepad me-2"></i>Roblox Profile
+        </a>
+        <a href="https://discord.com" target="_blank" class="flex-1 md:flex-none text-center bg-cyan-500 hover:bg-cyan-400 text-black text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg shadow-cyan-500/20 transition">
+          <i class="fa-brands fa-discord me-2"></i>Discord
+        </a>
+      </div>
+    </div>
+  </header>
 
-        <div class="info-block">
-            <div class="info-item">
-                <div class="info-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                </div>
-                <div class="info-content">
-                    <h4>Response Time</h4>
-                    <p>~10 minutes</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
-                </div>
-                <div class="info-content">
-                    <h4>Devices Available</h4>
-                    <p>PC / Mobile (cross-platform testing)</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                </div>
-                <div class="info-content">
-                    <h4>Timezone</h4>
-                    <p>CET / CEST (Sweden)</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z"/></svg>
-                </div>
-                <div class="info-content">
-                    <h4>Detailed Bug Reports</h4>
-                    <p>Every bug includes video proof, screenshots, and exact steps to reproduce.</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-                </div>
-                <div class="info-content">
-                    <h4>Free Re-Testing</h4>
-                    <p>When developers push a fix, I re-verify the issue completely for free.</p>
-                </div>
-            </div>
+  <!-- Key Metrics Banner -->
+  <section class="max-w-5xl mx-auto px-6 mb-12">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-cardBg border border-cardBorder p-4 rounded-2xl text-center">
+        <div class="text-2xl font-black text-white">50+</div>
+        <div class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-1">Игр протестировано</div>
+      </div>
+      <div class="bg-cardBg border border-cardBorder p-4 rounded-2xl text-center">
+        <div class="text-2xl font-black text-cyan-400">12.4M+</div>
+        <div class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-1">Охват студий</div>
+      </div>
+      <div class="bg-cardBg border border-cardBorder p-4 rounded-2xl text-center">
+        <div class="text-2xl font-black text-white">B2</div>
+        <div class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-1">Английский язык</div>
+      </div>
+      <div class="bg-cardBg border border-cardBorder p-4 rounded-2xl text-center">
+        <div class="text-2xl font-black text-emerald-400">PC + Mobile</div>
+        <div class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-1">Cross-platform</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Grid -->
+  <main class="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+    
+    <!-- Left Column: About & Tech -->
+    <div class="space-y-6">
+      <!-- Specs Card -->
+      <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-laptop text-cyan-400"></i> Сетап и устройства
+        </h3>
+        <ul class="space-y-3 text-sm text-slate-300">
+          <li class="flex items-center justify-between p-2.5 bg-slate-900/60 rounded-xl border border-slate-800">
+            <span><i class="fa-solid fa-laptop me-2 text-slate-400"></i> Mac</span>
+            <span class="text-xs bg-slate-800 text-cyan-300 px-2 py-0.5 rounded font-mono">MacBook Air M4</span>
+          </li>
+          <li class="flex items-center justify-between p-2.5 bg-slate-900/60 rounded-xl border border-slate-800">
+            <span><i class="fa-solid fa-mobile-screen me-2 text-slate-400"></i> Мобилки</span>
+            <span class="text-xs bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-mono">iOS / Android</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- General Info Card -->
+      <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-user-check text-cyan-400"></i> Детали
+        </h3>
+        <div class="space-y-3 text-sm text-slate-300">
+          <div>
+            <span class="text-xs text-slate-500 uppercase block font-semibold">Занятость</span>
+            <span class="text-white">Гибкий график, готов уделять максимум времени</span>
+          </div>
+          <div>
+            <span class="text-xs text-slate-500 uppercase block font-semibold">Языки</span>
+            <span class="text-white">Русский (родной), English (B2)</span>
+          </div>
         </div>
+      </div>
     </div>
 
-    <!-- ПРАВАЯ КОЛОНКА -->
-    <div class="main-content">
-        <div class="animate-2">
-            <div class="section-title">Featured QA Experience</div>
+    <!-- Right Column: Studios & Bug Report Standard -->
+    <div class="md:col-span-2 space-y-6">
+      
+      <!-- Studio Experience -->
+      <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-building text-cyan-400"></i> Опыт работы со студиями
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+          <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl">
+            <div class="font-bold text-white text-sm">Aura Software</div>
+            <div class="text-xs text-cyan-400 font-semibold mt-0.5">11M+ Members</div>
+          </div>
+          <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl">
+            <div class="font-bold text-white text-sm">The Woods Company</div>
+            <div class="text-xs text-cyan-400 font-semibold mt-0.5">1.1M+ Members</div>
+          </div>
+          <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl">
+            <div class="font-bold text-white text-sm">CLIENTQAMANAGER</div>
+            <div class="text-xs text-cyan-400 font-semibold mt-0.5">300K+ Members</div>
+          </div>
+        </div>
+        <div class="text-xs text-slate-400">
+          <span class="text-slate-300 font-semibold">Примеры плейсов:</span> +1 Mog Evolution, Dig For Eggs, +1 Aura Per Click, +1 Arrow Evolution, Clean the WORLD!
+        </div>
+      </div>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-title">Clean The World</span>
-                    <div class="badges">
-                        <span class="visits-badge">🔥 6.7M Visits</span>
-                        <span class="project-tag">World Building</span>
-                    </div>
-                </div>
-                <div class="project-desc">Multiplayer synchronization testing, map cleanliness interaction hitboxes, tool responsiveness, and mobile performance checks.</div>
+      <!-- Bug Report Format -->
+      <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+        <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-bug text-cyan-400"></i> Стандарт оформления баг-репортов
+        </h3>
+        <p class="text-xs text-slate-400 mb-4">Все баг-репорты оформляются детально в Discord с градацией по приоритетам:</p>
+        
+        <div class="space-y-3">
+          <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20 flex items-start gap-3">
+            <span class="w-3 h-3 rounded-full bg-emerald-400 mt-1"></span>
+            <div>
+              <div class="text-xs font-bold text-emerald-400 uppercase">Minor Bugs</div>
+              <div class="text-xs text-slate-300">Визуальные баги, текстуры, мелкие недочёты интерфейса.</div>
             </div>
-            
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-title">Dig for eggs</span>
-                    <div class="badges">
-                        <span class="visits-badge">🔥 117K Visits</span>
-                        <span class="project-tag">Simulation</span>
-                    </div>
-                </div>
-                <div class="project-desc">Testing egg generation logic, excavation tool hitboxes, inventory saving mechanics, and economy balance exploits.</div>
-            </div>
+          </div>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-title">Choose your anime ability</span>
-                    <div class="badges">
-                        <span class="visits-badge">🔥 104K Visits</span>
-                        <span class="project-tag">Combat / Anime</span>
-                    </div>
-                </div>
-                <div class="project-desc">Combat hitbox testing, ability scaling verification, cooldown exploitation checks, and mobile UI combat responsiveness.</div>
+          <div class="p-3 rounded-xl bg-amber-950/30 border border-amber-500/20 flex items-start gap-3">
+            <span class="w-3 h-3 rounded-full bg-amber-400 mt-1"></span>
+            <div>
+              <div class="text-xs font-bold text-amber-400 uppercase">Medium Bugs</div>
+              <div class="text-xs text-slate-300">Ошибки/варнинги в консоли разработчика, сбои отдельных механик.</div>
             </div>
+          </div>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-title">Collect Planets</span>
-                    <div class="badges">
-                        <span class="visits-badge">🔥 37K Visits</span>
-                        <span class="project-tag">Exploration</span>
-                    </div>
-                </div>
-                <div class="project-desc">Exploration mechanics, planet collection sync across servers, player gravity physics testing, and boundary glitching.</div>
+          <div class="p-3 rounded-xl bg-rose-950/30 border border-rose-500/20 flex items-start gap-3">
+            <span class="w-3 h-3 rounded-full bg-rose-400 mt-1"></span>
+            <div>
+              <div class="text-xs font-bold text-rose-400 uppercase">Critical Bugs</div>
+              <div class="text-xs text-slate-300">Критический баг, ломающий геймплей или полностью блокирующий прогресс.</div>
             </div>
+          </div>
         </div>
 
-        <div class="animate-3">
-            <div class="section-title">Additional Tested Experiences</div>
-            <div class="more-games-box">
-                <div class="compact-list">
-                    <div class="compact-chip">...and ~15 other titles</div>
-                    <div class="compact-chip">Visits ranging from 100 to 10K+</div>
-                </div>
-                <div class="more-note">Consistently applying the same strict QA standards to smaller emerging games as well as established front-page titles.</div>
-            </div>
+        <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-400 flex flex-wrap gap-2">
+          <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg">Playtime & Info</span>
+          <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg">Suggestions / UI Improvements</span>
+          <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg">5-Star Metric Rating</span>
         </div>
+      </div>
+
     </div>
+  </main>
 
-    <footer>
-        <p>&copy; 2026 jagheterperdyn • Roblox QA Portfolio</p>
-    </footer>
-</div>
+  <!-- Footer -->
+  <footer class="max-w-5xl mx-auto px-6 py-8 border-t border-slate-800 text-center text-xs text-slate-500">
+    <p>Discord: <span class="text-slate-300 font-mono">vfyayf_40990_84892</span> • Roblox QA Tester Portfolio</p>
+  </footer>
 
 </body>
 </html>
